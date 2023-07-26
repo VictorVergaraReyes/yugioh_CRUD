@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function submitHandler(Event){
     Event.preventDefault();
     let datosCarta={
@@ -14,5 +16,15 @@ export function submitHandler(Event){
     if(Event.target.defense.value>5000){
         alert("La defensa máxima es de 5000")
     }
-    return false; 
+    try {
+        return axios({
+            method: "get",
+            url: `https://express-rest-api-h22m.onrender.com/api/card`,
+            params:datosCarta,
+          })
+    } catch (error) {
+     console.log("Algo falló")   
+    }finally{
+        console.log("Peticion enviada")
+    }
 }
