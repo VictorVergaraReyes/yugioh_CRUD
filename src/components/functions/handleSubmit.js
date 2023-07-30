@@ -16,15 +16,30 @@ export function submitHandler(Event){
     if(Event.target.defense.value>5000){
         alert("La defensa máxima es de 5000")
     }
-    try {
-        return axios({
-            method: "get",
-            url: `https://express-rest-api-h22m.onrender.com/api/card`,
-            params:datosCarta,
-          })
-    } catch (error) {
-     console.log("Algo falló")   
-    }finally{
-        console.log("Peticion enviada")
+    if(Event.target.requestType.value=="GET"){
+        try {
+            return axios({
+                method: "get",
+                url: `https://express-rest-api-h22m.onrender.com/api/card`,
+              })
+        } catch (error) {
+         console.log("Algo falló")   
+        }finally{
+            console.log("Peticion enviada")
+        }
+    }
+    
+    if(Event.target.requestType.value=="POST"){
+        try {
+            return axios({
+                method: "post",
+                url: `https://express-rest-api-h22m.onrender.com/api/card`,
+                params:datosCarta,
+              })
+        } catch (error) {
+         console.log("Algo falló")   
+        }finally{
+            console.log("Peticion enviada")
+        }
     }
 }

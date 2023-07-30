@@ -8,6 +8,13 @@ function App() {
     
     <>
     <form onSubmit={submitHandler}>
+    <select className="form-select" aria-label="Default select example" name="requestType">
+    <option selected>Select the type of request</option>
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+    </select>
       <div className="mb-3">
         <label className="form-label">Nombre</label>
         <input className="form-control" id="cardName" name="monsterName" placeholder="card name"></input>
